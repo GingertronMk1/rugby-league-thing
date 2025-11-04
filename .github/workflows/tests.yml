@@ -21,6 +21,8 @@ jobs:
       - name: Install
         run: ./bin/install
       - name: Test
+        if: always()
         run: ./bin/testing
       - name: Pint
+        if: always()
         run: ./vendor/bin/sail run ./vendor/bin/pint
