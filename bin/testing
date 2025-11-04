@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+echo "Overwriting sqlite"
+echo "" > ./database/testing.sqlite
+
+echo "Making sure sail's up"
+./vendor/bin/sail up -d
+
+echo "NPM running"
+./vendor/bin/sail npm run build
+
+echo "Clearing config"
+./vendor/bin/sail artisan config:clear
+
+echo "And testing"
+./vendor/bin/sail artisan test \
+    --parallel \
+    --coverage \
+    --min=80 \
+    --configuration=phpunit.xml
