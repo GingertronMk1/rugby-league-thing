@@ -22,3 +22,5 @@ jobs:
         run: ./bin/install
       - name: Test
         run: ./bin/testing
+      - name: Pint
+        run: ./vendor/bin/sail run ./vendor/bin/pint
