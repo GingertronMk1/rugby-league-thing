@@ -17,8 +17,6 @@ services:
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
             IGNITION_LOCALt_SITES_PATH: '${PWD}'
-        env_file:
-            - './.env.local'
         volumes:
             - '.:/var/www/html'
         networks:
@@ -41,8 +39,6 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
             MYSQL_EXTRA_OPTIONS: '${MYSQL_EXTRA_OPTIONS:-""}'
-        env_file:
-            - './.env.local'
         volumes:
             - './sail/redis-data:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
